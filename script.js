@@ -1,8 +1,28 @@
 console.log("Hello World");
 
 // Create function getComputerChoice
-// Create option list(Rock, Paper, Scissors) 
-// Randomly select from option list for getComputerChoice
+function getComputerChoice() {
+
+  // Randomly select from option list for getComputerChoice
+  let n = Math.floor(Math.random() * 3), computerChoice;
+
+  switch (n) {
+    case 0:
+      computerChoice = "rock";
+      break;
+
+    case 1:
+      computerChoice = "paper";
+      break;
+
+    case 2:
+      computerChoice = "scissors";
+      break;
+  }
+
+  return computerChoice;
+}
+
 // Create function getHumanChoice that will ask for input
 // Ensure input will match(case -insensitive) one of set options
 // Create variables computerScore and humanScore
