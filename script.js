@@ -23,9 +23,13 @@ function getComputerChoice() {
   return choice;
 }
 
+let input;
+
 // Create function getHumanChoice that will ask for input
 function getHumanChoice() {
-  let input = prompt("Rock, Paper, or Scissors?", ''), choice;
+  let choice;
+
+  input = prompt("Rock, Paper, or Scissors?", '');
 
   // Ensure input will match (case -insensitive) one of set options
   switch (input.toLowerCase()) {
@@ -53,13 +57,15 @@ function getHumanChoice() {
 // Initialize variables at 0
 let humanScore = 0, computerScore = 0;
 
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+
 // Create function playRound
-function playRound() {
-  let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
+function playRound(humanChoice, computerChoice) {
+
+  console.log(humanChoice, computerChoice);
 
   // Compare computerChoice and humanChoice
-
   switch (true) {
     case humanChoice === "rock" && computerChoice === "scissors":
       console.log("You win! Rock beats Scissors.");
@@ -87,7 +93,7 @@ function playRound() {
       break;
 
     case computerChoice === "paper" && humanChoice === "rock":
-      console.log("You lose :\( Scissors beats Rock.");
+      console.log("You lose :\( Paper beats Rock.");
       computerScore++;
       break;
 
