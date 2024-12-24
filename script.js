@@ -4,30 +4,24 @@ console.log("Hello World");
 function getComputerChoice() {
 
   // Randomly select from option list for getComputerChoice
-  let n = Math.floor(Math.random() * 3), choice;
+  let n = Math.floor(Math.random() * 3);
 
   switch (n) {
     case 0:
-      choice = "rock";
-      break;
+      return "rock";
 
     case 1:
-      choice = "paper";
-      break;
+      return "paper";
 
     case 2:
-      choice = "scissors";
-      break;
+      return "scissors";
   }
 
-  return choice;
 }
-
-let input;
 
 // Create function getHumanChoice that will ask for input
 function getHumanChoice() {
-  input = prompt("Rock, Paper, or Scissors?", '');
+  let input = prompt("Rock, Paper, or Scissors?", '');
 
   // Ensure input will match (case -insensitive) one of set options
   switch (input.toLowerCase()) {
@@ -68,8 +62,10 @@ function playGame() {
     switch (humanChoice) {
       case "rock":
         if (computerChoice === "scissors") {
+
           // Console.log win / lose message
           console.log("You win! Rock beats Scissors.");
+
           // Increment the winner's score
           humanScore++;
         } else if (computerChoice === "paper") {
@@ -105,7 +101,7 @@ function playGame() {
         break;
       
       default:
-        console.error("Error with playRound");
+        throw new Error("Error with playRound");
     }
 
     console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
@@ -119,7 +115,8 @@ function playGame() {
     humanChoice = getHumanChoice();
     playRound();
   }
-
+  
+  // Declare winner of the game 
   if (computerScore > humanScore) {
     console.log(`The computer defeated you! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
   } else if (humanScore > computerScore) {
@@ -130,11 +127,6 @@ function playGame() {
     console.error("Final Score Error");
   }
   
-  
-
-
-  // Declare winner of the game 
-
 }
 
 playGame();
