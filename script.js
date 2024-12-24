@@ -27,31 +27,27 @@ let input;
 
 // Create function getHumanChoice that will ask for input
 function getHumanChoice() {
-  let choice;
-
   input = prompt("Rock, Paper, or Scissors?", '');
 
   // Ensure input will match (case -insensitive) one of set options
   switch (input.toLowerCase()) {
     case "rock":
-      choice = "rock";
-      break;
+      return "rock";
     
     case "paper":
-      choice = "paper";
-      break;
+      return "paper";
     
     case "scissors":
-      choice = "scissors";
-      break;
+      return "scissors";
 
     default:
-      alert("Invalid input");
-      getHumanChoice();
+      throw new Error("Invalid input");
   }
 
-  return choice;
 }
+
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
 
 // Create function playGame
 function playGame() {
@@ -59,10 +55,6 @@ function playGame() {
   // Create variables computerScore and humanScore
   // Initialize variables at 0
   let humanScore = 0, computerScore = 0, roundCount = 0;
-
-  let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
-
 
   // Move playRound() into playGame()
 
@@ -73,53 +65,45 @@ function playGame() {
 
     // Compare computerChoice and humanChoice
     // Determine the winner of the round
-    switch (true) {
-      case humanChoice === "rock" && computerChoice === "scissors":
-
-      // Console.log win / lose message
-     console.log("You win! Rock beats Scissors.");
-
-      // Increment the winner's score
-      humanScore++;
+    switch (humanChoice) {
+      case "rock":
+        if (computerChoice === "scissors") {
+          // Console.log win / lose message
+          console.log("You win! Rock beats Scissors.");
+          // Increment the winner's score
+          humanScore++;
+        } else if (computerChoice === "paper") {
+          console.log("You lose :\( Paper beats Rock.");
+          computerScore++;  
+        } else {
+          console.log("It's a tie!");
+        };
         break;
-    
-      case humanChoice === "scissors" && computerChoice === "paper":
-        console.log("You win! Scissors beats Paper.");
-        humanScore++;
+      
+      case "scissors":
+        if (computerChoice === "paper") {
+          console.log("You win! Scissors beats Paper.");
+          humanScore++;
+        } else if (computerChoice === "rock") {
+          console.log("You lose :\( Rock beats Scissors.");
+          computerScore++;  
+        } else {
+          console.log("It's a tie!");
+        } 
         break;
-
-      case humanChoice === "paper" && computerChoice === "rock":
-        console.log("You win! Paper beats Rock.");
-        humanScore++;
+      
+      case "paper":
+        if (computerChoice === "rock") {
+          console.log("You win! Paper beats Rock.");
+          humanScore++;
+        } else if (computerChoice === "scissors") {
+          console.log("You lose :\( Scissors beats paper.");
+          computerScore++;
+        } else {
+          console.log("It's a tie!");
+        } 
         break;
-
-      case computerChoice === "rock" && humanChoice === "scissors":
-        console.log("You lose :\( Rock beats Scissors.");
-        computerScore++;
-        break;
-
-      case computerChoice === "scissors" && humanChoice === "paper":
-        console.log("You lose :\( Scissors breats Paper.");
-        computerScore++;
-        break;
-
-      case computerChoice === "paper" && humanChoice === "rock":
-        console.log("You lose :\( Paper beats Rock.");
-        computerScore++;
-        break;
-
-      case humanChoice === "rock" && computerChoice === "rock":
-        console.log("It's a tie!")
-        break;
-
-      case humanChoice === "paper" && computerChoice === "paper":
-        console.log("It's a tie!")
-        break;
-
-      case humanChoice === "scissors" && computerChoice === "scissors":
-        console.log("It's a tie!")
-        break;
-
+      
       default:
         console.error("Error with playRound");
     }
@@ -129,7 +113,7 @@ function playGame() {
   }
 
   // Call playRound 5x
-  playRound();
+  playRound(humanChoice, computerChoice);
   for (i = 1; i < 5; i++) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
