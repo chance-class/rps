@@ -53,73 +53,106 @@ function getHumanChoice() {
   return choice;
 }
 
-// Create variables computerScore and humanScore
-// Initialize variables at 0
-let humanScore = 0, computerScore = 0;
+// Create function playGame
+function playGame() {
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+  // Create variables computerScore and humanScore
+  // Initialize variables at 0
+  let humanScore = 0, computerScore = 0, roundCount = 0;
 
-// Create function playRound
-function playRound(humanChoice, computerChoice) {
+  let computerChoice = getComputerChoice();
+  let humanChoice = getHumanChoice();
 
-  console.log(humanChoice, computerChoice);
 
-  // Compare computerChoice and humanChoice
-  switch (true) {
-    case humanChoice === "rock" && computerChoice === "scissors":
-      console.log("You win! Rock beats Scissors.");
+  // Move playRound() into playGame()
+
+  // Create function playRound
+  function playRound() {
+
+    console.log(humanChoice, computerChoice);
+
+    // Compare computerChoice and humanChoice
+    // Determine the winner of the round
+    switch (true) {
+      case humanChoice === "rock" && computerChoice === "scissors":
+
+      // Console.log win / lose message
+     console.log("You win! Rock beats Scissors.");
+
+      // Increment the winner's score
       humanScore++;
-      break;
+        break;
     
-    case humanChoice === "scissors" && computerChoice === "paper":
-      console.log("You win! Scissors beats Paper.");
-      humanScore++;
-      break;
+      case humanChoice === "scissors" && computerChoice === "paper":
+        console.log("You win! Scissors beats Paper.");
+        humanScore++;
+        break;
 
-    case humanChoice === "paper" && computerChoice === "rock":
-      console.log("You win! Paper beats Rock.");
-      humanScore++;
-      break;
+      case humanChoice === "paper" && computerChoice === "rock":
+        console.log("You win! Paper beats Rock.");
+        humanScore++;
+        break;
 
-    case computerChoice === "rock" && humanChoice === "scissors":
-      console.log("You lose :\( Rock beats Scissors.");
-      computerScore++;
-      break;
+      case computerChoice === "rock" && humanChoice === "scissors":
+        console.log("You lose :\( Rock beats Scissors.");
+        computerScore++;
+        break;
 
-    case computerChoice === "scissors" && humanChoice === "paper":
-      console.log("You lose :\( Scissors breats Paper.");
-      computerScore++;
-      break;
+      case computerChoice === "scissors" && humanChoice === "paper":
+        console.log("You lose :\( Scissors breats Paper.");
+        computerScore++;
+        break;
 
-    case computerChoice === "paper" && humanChoice === "rock":
-      console.log("You lose :\( Paper beats Rock.");
-      computerScore++;
-      break;
+      case computerChoice === "paper" && humanChoice === "rock":
+        console.log("You lose :\( Paper beats Rock.");
+        computerScore++;
+        break;
 
-    case humanChoice === "rock" && computerChoice === "rock":
-      console.log("It's a tie!")
-      break;
+      case humanChoice === "rock" && computerChoice === "rock":
+        console.log("It's a tie!")
+        break;
 
-    case humanChoice === "paper" && computerChoice === "paper":
-      console.log("It's a tie!")
-      break;
+      case humanChoice === "paper" && computerChoice === "paper":
+        console.log("It's a tie!")
+        break;
 
-    case humanChoice === "scissors" && computerChoice === "scissors":
-      console.log("It's a tie!")
-      break;
+      case humanChoice === "scissors" && computerChoice === "scissors":
+        console.log("It's a tie!")
+        break;
 
-    default:
-      console.error("Error with playRound");
+      default:
+        console.error("Error with playRound");
+    }
+
+    console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+    roundCount++;
   }
 
-  console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+  // Call playRound 5x
+  playRound();
+  for (i = 1; i < 5; i++) {
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    playRound();
+  }
+
+  if (computerScore > humanScore) {
+    console.log(`The computer defeated you! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
+  } else if (humanScore > computerScore) {
+    console.log(`You beat the computer! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
+  } else if (computerScore === humanScore) {
+    console.log(`It's a tie! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
+  } else {
+    console.error("Final Score Error");
+  }
+  
+  
+
+
+  // Declare winner of the game 
+
 }
 
+playGame();
 
-// Determine the winner of the round
-// Increment the winner's score
-// Console.log win / lose message
-// Create function playGame
-// Call playRound 5x
-// Declare winner of the game 
+
