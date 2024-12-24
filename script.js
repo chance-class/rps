@@ -4,41 +4,41 @@ console.log("Hello World");
 function getComputerChoice() {
 
   // Randomly select from option list for getComputerChoice
-  let n = Math.floor(Math.random() * 3), computerChoice;
+  let n = Math.floor(Math.random() * 3), choice;
 
   switch (n) {
     case 0:
-      computerChoice = "rock";
+      choice = "rock";
       break;
 
     case 1:
-      computerChoice = "paper";
+      choice = "paper";
       break;
 
     case 2:
-      computerChoice = "scissors";
+      choice = "scissors";
       break;
   }
 
-  return computerChoice;
+  return choice;
 }
 
 // Create function getHumanChoice that will ask for input
 function getHumanChoice() {
-  let input = prompt("Rock, Paper, or Scissors?", ''), humanChoice;
+  let input = prompt("Rock, Paper, or Scissors?", ''), choice;
 
   // Ensure input will match (case -insensitive) one of set options
   switch (input.toLowerCase()) {
     case "rock":
-      humanChoice = "rock";
+      choice = "rock";
       break;
     
     case "paper":
-      humanChoice = "paper";
+      choice = "paper";
       break;
     
     case "scissors":
-      humanChoice = "scissors";
+      choice = "scissors";
       break;
 
     default:
@@ -46,7 +46,7 @@ function getHumanChoice() {
       getHumanChoice();
   }
 
-  return humanChoice;
+  return choice;
 }
 
 // Create variables computerScore and humanScore
