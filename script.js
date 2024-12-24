@@ -24,7 +24,29 @@ function getComputerChoice() {
 }
 
 // Create function getHumanChoice that will ask for input
-// Ensure input will match(case -insensitive) one of set options
+function getHumanChoice() {
+  let input = prompt("Rock, Paper, or Scissors?", ''), humanChoice;
+
+  // Ensure input will match (case -insensitive) one of set options
+  switch (input.toLowerCase()) {
+    case "rock":
+      humanChoice = "rock";
+      break;
+    
+    case "paper":
+      humanChoice = "paper";
+      break;
+    
+    case "scissors":
+      humanChoice = "scissors";
+      break;
+
+    default:
+      alert("Invalid input");
+  }
+}
+
+
 // Create variables computerScore and humanScore
 // Initialize variables at 0
 // Create function playRound
