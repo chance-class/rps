@@ -43,7 +43,10 @@ function getHumanChoice() {
 
     default:
       alert("Invalid input");
+      getHumanChoice();
   }
+
+  return humanChoice;
 }
 
 // Create variables computerScore and humanScore
@@ -51,7 +54,63 @@ function getHumanChoice() {
 let humanScore = 0, computerScore = 0;
 
 // Create function playRound
-// Compare computerChoice and humanChoice
+function playRound() {
+  let computerChoice = getComputerChoice();
+  let humanChoice = getHumanChoice();
+
+  // Compare computerChoice and humanChoice
+
+  switch (true) {
+    case humanChoice === "rock" && computerChoice === "scissors":
+      console.log("You win! Rock beats Scissors.");
+      humanScore++;
+      break;
+    
+    case humanChoice === "scissors" && computerChoice === "paper":
+      console.log("You win! Scissors beats Paper.");
+      humanScore++;
+      break;
+
+    case humanChoice === "paper" && computerChoice === "rock":
+      console.log("You win! Paper beats Rock.");
+      humanScore++;
+      break;
+
+    case computerChoice === "rock" && humanChoice === "scissors":
+      console.log("You lose :\( Rock beats Scissors.");
+      computerScore++;
+      break;
+
+    case computerChoice === "scissors" && humanChoice === "paper":
+      console.log("You lose :\( Scissors breats Paper.");
+      computerScore++;
+      break;
+
+    case computerChoice === "paper" && humanChoice === "rock":
+      console.log("You lose :\( Scissors beats Rock.");
+      computerScore++;
+      break;
+
+    case humanChoice === "rock" && computerChoice === "rock":
+      console.log("It's a tie!")
+      break;
+
+    case humanChoice === "paper" && computerChoice === "paper":
+      console.log("It's a tie!")
+      break;
+
+    case humanChoice === "scissors" && computerChoice === "scissors":
+      console.log("It's a tie!")
+      break;
+
+    default:
+      console.error("Error with playRound");
+  }
+
+  console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
+}
+
+
 // Determine the winner of the round
 // Increment the winner's score
 // Console.log win / lose message
