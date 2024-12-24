@@ -46,9 +46,10 @@ function getHumanChoice() {
   }
 }
 
-
 // Create variables computerScore and humanScore
 // Initialize variables at 0
+let humanScore = 0, computerScore = 0;
+
 // Create function playRound
 // Compare computerChoice and humanChoice
 // Determine the winner of the round
