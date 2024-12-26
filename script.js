@@ -52,7 +52,7 @@ function playGame() {
   // Move playRound() into playGame()
 
   // Create function playRound
-  function playRound() {
+  function playRound(humanChoice, computerChoice) {
 
     // Compare computerChoice and humanChoice
     // Determine the winner of the round
