@@ -1,4 +1,3 @@
-// Create function getComputerChoice
 function getComputerChoice() {
 
   // Randomly select from option list
@@ -17,7 +16,6 @@ function getComputerChoice() {
 
 }
 
-// Create function getHumanChoice that will ask for input
 function getHumanChoice() {
   let input = prompt("Rock, Paper, or Scissors?", '');
 
@@ -38,20 +36,13 @@ function getHumanChoice() {
 
 }
 
-// Create function playGame
 function playGame() {
 
-  // Assign getChoice functions to variables
   let computerChoice = getComputerChoice();
   let humanChoice = getHumanChoice();
 
-  // Create variables computerScore and humanScore
-  // Initialize variables at zero
   let humanScore = 0, computerScore = 0;
 
-  // Move playRound() into playGame()
-
-  // Create function playRound
   function playRound(humanChoice, computerChoice) {
 
     // Compare computerChoice and humanChoice
@@ -59,11 +50,7 @@ function playGame() {
     switch (humanChoice) {
       case "rock":
         if (computerChoice === "scissors") {
-
-          // Console.log win / lose message
           console.log("You win! Rock beats Scissors.");
-
-          // Increment the winner's score
           humanScore++;
         } else if (computerChoice === "paper") {
           console.log("You lose :\( Paper beats Rock.");
@@ -101,7 +88,6 @@ function playGame() {
         throw new Error("Error with playRound");
     }
 
-    // Display current score
     console.log(`You: ${humanScore}, Computer: ${computerScore}`);
 
   }
@@ -114,7 +100,6 @@ function playGame() {
     playRound(humanChoice, computerChoice);
   }
   
-  // Declare winner of the game and display final scores
   if (computerScore > humanScore) {
     console.log(`The computer defeated you... Final Score - You: ${humanScore}, Computer: ${computerScore}`);
   } else if (humanScore > computerScore) {
