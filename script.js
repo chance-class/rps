@@ -63,30 +63,7 @@ function getComputerChoice() {
 
 }
 
-function getHumanChoice() {
-  let input = prompt("Rock, Paper, or Scissors?", '');
-
-  // Ensure input will match (case-insensitive) one of set options
-  switch (input.toLowerCase()) {
-    case "rock":
-      return "rock";
-    
-    case "paper":
-      return "paper";
-    
-    case "scissors":
-      return "scissors";
-
-    default:
-      throw new Error("Invalid input");
-  }
-
-}
-
-//function playGame() {
-
   let computerChoice = getComputerChoice();
-//  let humanChoice = getHumanChoice();
 
   let humanScore = 0, computerScore = 0;
 
@@ -135,32 +112,16 @@ function getHumanChoice() {
         throw new Error("Error with playRound");
     }
 
- //   console.log(`You: ${humanScore}, Computer: ${computerScore}`);
       score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
 
+      if (humanScore === 5) {
+        alert(`You beat the computer! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
+      } else if (computerScore === 5) {
+        alert(`The computer defeated you... Final Score - You: ${humanScore}, Computer: ${computerScore}`)
+      }
+
   }
 
-  // Call playRound five times
-  //playRound(humanChoice, computerChoice);
-  // for (i = 1; i < 5; i++) {
-  //   computerChoice = getComputerChoice();
-  //   humanChoice = getHumanChoice();
-  //   playRound(humanChoice, computerChoice);
-  // }
-  
-  if (computerScore > humanScore) {
-    console.log(`The computer defeated you... Final Score - You: ${humanScore}, Computer: ${computerScore}`);
-  } else if (humanScore > computerScore) {
-    console.log(`You beat the computer! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
-  } else if (computerScore === humanScore) {
-    console.log(`It's a tie! Final Score - You: ${humanScore}, Computer: ${computerScore}`);
-  } else {
-    console.error("Final Score Error");
-  }
-  
-//}
 
-// Call playGame to start game upon page load
-//playGame();
 
 
