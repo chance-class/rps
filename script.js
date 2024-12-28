@@ -36,10 +36,10 @@ function getHumanChoice() {
 
 }
 
-function playGame() {
+//function playGame() {
 
   let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
+//  let humanChoice = getHumanChoice();
 
   let humanScore = 0, computerScore = 0;
 
@@ -88,12 +88,12 @@ function playGame() {
         throw new Error("Error with playRound");
     }
 
-    console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+ //   console.log(`You: ${humanScore}, Computer: ${computerScore}`);
 
   }
 
   // Call playRound five times
-  playRound(humanChoice, computerChoice);
+  //playRound(humanChoice, computerChoice);
   // for (i = 1; i < 5; i++) {
   //   computerChoice = getComputerChoice();
   //   humanChoice = getHumanChoice();
@@ -110,7 +110,7 @@ function playGame() {
     console.error("Final Score Error");
   }
   
-}
+//}
 const body = document.body;
 
 const container = document.createElement("div");
@@ -127,6 +127,28 @@ container.appendChild(paper);
 container.appendChild(scissors);
 
 body.appendChild(container);
+
+container.addEventListener("click", (e) => {
+  switch (e.target) {
+    case rock:
+      playRound("rock", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    case paper:
+      playRound("paper", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    case scissors:
+      playRound("scissors", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    default:
+      throw new Error("ERROR");
+  }
+})
 
 // Call playGame to start game upon page load
 //playGame();
