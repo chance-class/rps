@@ -94,11 +94,11 @@ function playGame() {
 
   // Call playRound five times
   playRound(humanChoice, computerChoice);
-  for (i = 1; i < 5; i++) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-  }
+  // for (i = 1; i < 5; i++) {
+  //   computerChoice = getComputerChoice();
+  //   humanChoice = getHumanChoice();
+  //   playRound(humanChoice, computerChoice);
+  // }
   
   if (computerScore > humanScore) {
     console.log(`The computer defeated you... Final Score - You: ${humanScore}, Computer: ${computerScore}`);
@@ -111,8 +111,24 @@ function playGame() {
   }
   
 }
+const body = document.body;
+
+const container = document.createElement("div");
+
+const rock = document.createElement("button");
+rock.textContent = "Rock";
+const paper = document.createElement("button")
+paper.textContent = "Paper";
+const scissors = document.createElement("button");
+scissors.textContent = "Scissors";
+
+container.appendChild(rock);
+container.appendChild(paper);
+container.appendChild(scissors);
+
+body.appendChild(container);
 
 // Call playGame to start game upon page load
-playGame();
+//playGame();
 
 
