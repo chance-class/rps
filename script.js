@@ -120,6 +120,16 @@ function getComputerChoice() {
         alert(`The computer defeated you... Final Score - You: ${humanScore}, Computer: ${computerScore}`)
       }
 
+      if (humanScore === 5 || computerScore === 5) {
+        results.textContent = '';
+        const finalScore = document.createElement("h3");
+        finalScore.textContent = "FINAL SCORE";
+        body.insertBefore(finalScore, score);
+        rock.remove();
+        paper.remove();
+        scissors.remove();
+      }
+      
   }
 
 
