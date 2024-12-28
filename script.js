@@ -1,3 +1,50 @@
+const body = document.body;
+
+const container = document.createElement("div");
+
+const rock = document.createElement("button");
+rock.textContent = "Rock";
+const paper = document.createElement("button")
+paper.textContent = "Paper";
+const scissors = document.createElement("button");
+scissors.textContent = "Scissors";
+
+container.appendChild(rock);
+container.appendChild(paper);
+container.appendChild(scissors);
+
+body.appendChild(container);
+
+container.addEventListener("click", (e) => {
+  switch (e.target) {
+    case rock:
+      playRound("rock", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    case paper:
+      playRound("paper", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    case scissors:
+      playRound("scissors", computerChoice);
+      computerChoice = getComputerChoice();
+      break;
+
+    default:
+      throw new Error("ERROR");
+  }
+})
+
+const results = document.createElement("div");
+const score = document.createElement("div");
+
+body.appendChild(results);
+body.appendChild(score);
+
+
+
 function getComputerChoice() {
 
   // Randomly select from option list
@@ -50,37 +97,37 @@ function getHumanChoice() {
     switch (humanChoice) {
       case "rock":
         if (computerChoice === "scissors") {
-          console.log("You win! Rock beats Scissors.");
+          results.textContent = "You win! Rock beats Scissors.";
           humanScore++;
         } else if (computerChoice === "paper") {
-          console.log("You lose :\( Paper beats Rock.");
+          results.textContent = "You lose :\( Paper beats Rock.";
           computerScore++;  
         } else {
-          console.log("It's a tie! You both chose Rock.");
+          results.textContent = "It's a tie! You both chose Rock.";
         };
         break;
       
       case "scissors":
         if (computerChoice === "paper") {
-          console.log("You win! Scissors beats Paper.");
+          results.textContent = "You win! Scissors beats Paper.";
           humanScore++;
         } else if (computerChoice === "rock") {
-          console.log("You lose :\( Rock beats Scissors.");
+          results.textContent = "You lose :\( Rock beats Scissors.";
           computerScore++;  
         } else {
-          console.log("It's a tie! You both chose Scissors.");
+          results.textContent = "It's a tie! You both chose Scissors.";
         } 
         break;
       
       case "paper":
         if (computerChoice === "rock") {
-          console.log("You win! Paper beats Rock.");
+          results.textContent = "You win! Paper beats Rock.";
           humanScore++;
         } else if (computerChoice === "scissors") {
-          console.log("You lose :\( Scissors beats Paper.");
+          results.textContent = "You lose :\( Scissors beats Paper.";
           computerScore++;
         } else {
-          console.log("It's a tie! You both chose Paper.");
+          results.textContent = "It's a tie! You both chose Paper.";
         } 
         break;
       
@@ -89,6 +136,7 @@ function getHumanChoice() {
     }
 
  //   console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+      score.textContent = `You: ${humanScore}, Computer: ${computerScore}`;
 
   }
 
@@ -111,44 +159,6 @@ function getHumanChoice() {
   }
   
 //}
-const body = document.body;
-
-const container = document.createElement("div");
-
-const rock = document.createElement("button");
-rock.textContent = "Rock";
-const paper = document.createElement("button")
-paper.textContent = "Paper";
-const scissors = document.createElement("button");
-scissors.textContent = "Scissors";
-
-container.appendChild(rock);
-container.appendChild(paper);
-container.appendChild(scissors);
-
-body.appendChild(container);
-
-container.addEventListener("click", (e) => {
-  switch (e.target) {
-    case rock:
-      playRound("rock", computerChoice);
-      computerChoice = getComputerChoice();
-      break;
-
-    case paper:
-      playRound("paper", computerChoice);
-      computerChoice = getComputerChoice();
-      break;
-
-    case scissors:
-      playRound("scissors", computerChoice);
-      computerChoice = getComputerChoice();
-      break;
-
-    default:
-      throw new Error("ERROR");
-  }
-})
 
 // Call playGame to start game upon page load
 //playGame();
