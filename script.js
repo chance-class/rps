@@ -128,6 +128,12 @@ function getComputerChoice() {
         rock.remove();
         paper.remove();
         scissors.remove();
+        const refresh = document.createElement("button");
+        refresh.textContent = "Play Again";
+        refresh.addEventListener("click", () => {
+          location.reload();
+        })
+        body.appendChild(refresh);
       }
       
   }
